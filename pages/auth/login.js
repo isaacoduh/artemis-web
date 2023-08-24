@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/router';
@@ -17,18 +17,32 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       setLoading(true);
-      console.log(email);
-      console.log(password);
+      await axios
+        .post(`http://localhost:5100/api/v1/auth/login`, {
+          email,
+          password,
+        })
+        .then((response) => {
+          localStorage.setItem('token', response.data.data.tokens.access.token);
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message);
+        });
       setLoading(false);
       router.push('/');
       toast.success('Login Success');
     } catch (error) {
-      console.log(error);
       setLoading(false);
       toast.error('Something went wrong!');
-      // toast.error(err.response.data.error);
     }
   };
+
+  useEffect(() => {
+    const tokenPresent = localStorage.getItem('token');
+    if (tokenPresent) {
+      router.push('/');
+    }
+  }, []);
 
   return (
     <div className='container'>
