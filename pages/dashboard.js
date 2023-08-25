@@ -33,7 +33,7 @@ export default function Dashboard() {
   useEffect(() => {
     const tokenPresent = localStorage.getItem('token');
     if (!tokenPresent) {
-      router.push('/login');
+      router.push('/auth/login');
     }
     getUser();
   }, []);

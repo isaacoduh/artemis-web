@@ -17,14 +17,25 @@ export default function RegisterPage() {
     e.preventDefault();
     try {
       setLoading(true);
-      console.log(name);
-      console.log(username);
-      console.log(email);
-      console.log(password);
-      setLoading(false);
-      toast.success('Registration Completed!');
+      await axios
+        .post(`http://localhost:5100/api/v1/auth/register`, {
+          email,
+          password,
+          username,
+          name,
+        })
+        .then((response) => {
+          if (response.data.status == 201) {
+            console.log('ok');
+            setLoading(false);
+            toast.success('Registration Successful');
+            router.push('/auth/login');
+          }
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message);
+        });
     } catch (error) {
-      console.log(error);
       setLoading(false);
       toast.error(error);
     }

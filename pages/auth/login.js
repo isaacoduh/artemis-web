@@ -29,7 +29,7 @@ export default function LoginPage() {
           toast.error(error.response.data.message);
         });
       setLoading(false);
-      router.push('/');
+      router.push('/dashboard');
       toast.success('Login Success');
     } catch (error) {
       setLoading(false);
