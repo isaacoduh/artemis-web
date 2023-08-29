@@ -1,4 +1,82 @@
-:root {
+.sidebar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+  min-height: 100vh;
+}
+
+.sidebar .nav-link {
+  color: #6c757d;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  /* background-color: #f8f9fa; */
+  color: #f8f9fa;
+  /* color: #000; */
+}
+
+.sidebar .bi {
+  font-size: 1.2rem;
+}
+
+.sidebar .navbar-brand {
+  font-weight: bold;
+}
+
+.sidebar .position-absolute {
+  background-color: #f8f9fa;
+}
+
+.sidebar small {
+  font-size: 0.8rem;
+}
+
+.sidebar-brand {
+  position: absolute;
+  top: 0;
+  width: 200;
+  text-align: Left;
+  margin-left: 10px;
+  padding: 15px 0;
+  color: aliceblue;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav {
+  text-indent: 10px;
+  line-height: 30px;
+}
+
+.sidebar-nav > li a {
+  display: block;
+  text-decoration: none;
+  color: #757575;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.sidebar-nav > li > a:hover,
+.sidebar-nav > li.active > a {
+  text-decoration: none;
+  color: #fff;
+  background: #f8be12;
+}
+.sidebar-nav > li > a i.fa {
+  font-size: 24px;
+  width: 60px;
+}
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -104,4 +182,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */

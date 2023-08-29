@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import Sidebar from '@/components/sidebar';
 export default function Dashboard() {
   //   const token = localStorage.getItem('token');
   const [user, setUser] = useState({});
@@ -20,7 +21,8 @@ export default function Dashboard() {
         setUser(response.data.data.user);
       })
       .catch((error) => {
-        console.log(error);
+        localStorage.clear();
+        router.push('/auth/login');
       });
   };
 
@@ -40,6 +42,20 @@ export default function Dashboard() {
 
   return (
     <Layout>
+      <div className='pt-3 pb-3 mb-3 border-bottom'>
+        <h4>Overview</h4>
+        <p>Send and Receive Money</p>
+      </div>
+      <div>
+        <p>
+          Welcome <strong className='text-uppercase'>{user.name}</strong>
+        </p>
+        <hr />
+        <button onClick={logoutHandler} className='btn btn-md btn-secondary'>
+          Logout
+        </button>
+      </div>
+      {/* <Sidebar />
       <div className='container' style={{ marginTop: '80px' }}>
         <div className='row justify-content-center'>
           <div className='col-md-12'>
@@ -57,7 +73,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </Layout>
   );
 }
