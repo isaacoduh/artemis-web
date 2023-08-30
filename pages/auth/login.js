@@ -18,7 +18,7 @@ export default function LoginPage() {
     try {
       setLoading(true);
       await axios
-        .post(`http://localhost:5100/api/v1/auth/login`, {
+        .post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`, {
           email,
           password,
         })

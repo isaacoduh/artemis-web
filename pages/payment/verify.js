@@ -15,7 +15,7 @@ export default function PaymentVerification() {
     try {
       await axios
         .get(
-          `http://localhost:5100/api/v1/account/payment/callback?reference=${params.reference}`,
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/account/payment/callback?reference=${params.reference}`,
         )
         .then((response) => {
           console.log(response.status);

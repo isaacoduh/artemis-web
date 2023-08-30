@@ -24,7 +24,7 @@ export default function Dashboard() {
       'Authorization'
     ] = `Bearer ${localStorage.getItem('token')}`;
     await axios
-      .get(`http://localhost:5100/api/v1/auth/me`)
+      .get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`)
       .then((response) => {
         setUser(response.data.data.user);
       })
@@ -39,7 +39,7 @@ export default function Dashboard() {
       'Authorization'
     ] = `Bearer ${localStorage.getItem('token')}`;
     await axios
-      .get('http://localhost:5100/api/v1/account/my-accounts')
+      .get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/account/my-accounts`)
       .then((response) => {
         setUserAccounts(response.data.data.accounts);
       })

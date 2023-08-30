@@ -18,7 +18,7 @@ export default function RegisterPage() {
     try {
       setLoading(true);
       await axios
-        .post(`http://localhost:5100/api/v1/auth/register`, {
+        .post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`, {
           email,
           password,
           username,
