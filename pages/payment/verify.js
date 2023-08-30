@@ -6,6 +6,7 @@ const { useRouter } = require('next/router');
 export default function PaymentVerification() {
   const router = useRouter();
   const params = router.query;
+  console.log(params.trxref);
   const [loading, setLoading] = useState(false);
 
   //   console.log(params.txref);
@@ -33,7 +34,7 @@ export default function PaymentVerification() {
 
   useEffect(() => {
     handleVerification();
-  }, []);
+  }, [params]);
 
   return (
     <div>

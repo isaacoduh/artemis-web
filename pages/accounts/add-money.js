@@ -3,7 +3,24 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 export default function AddMoney() {
+  const [user, setUser] = useState({});
   const [amount, setAmount] = useState('');
+
+  const getUser = async () => {
+    axios.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${localStorage.getItem('token')}`;
+    await axios
+      .get(`http://localhost:5100/api/v1/auth/me`)
+      .then((response) => {
+        setUser(response.data.data.user);
+      })
+      .catch((error) => {
+        localStorage.clear();
+        router.push('/auth/login');
+      });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(amount);
@@ -13,7 +30,7 @@ export default function AddMoney() {
     await axios
       .post(`http://localhost:5100/api/v1/account/accept-pay`, {
         amount,
-        email: 'ufuomaoduh@gmail.com',
+        email: user.email,
       })
       .then((response) => {
         window.location.href = response.data?.data.authorization_url;

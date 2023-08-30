@@ -97,9 +97,8 @@ export default function Dashboard() {
         <div className='card-deck'>
           <div className='row'>
             {userAccounts.map((account, index) => (
-              <div className='col-lg-4'>
+              <div className='col-lg-4' key={account.id}>
                 <AccountCard
-                  key={index}
                   currency={account.currency}
                   balance={account.balance}
                 />
