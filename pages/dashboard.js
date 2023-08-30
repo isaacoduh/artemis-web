@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { FaMoneyBillWave, FaPlus } from 'react-icons/fa';
 
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
+
 import Sidebar from '@/components/sidebar';
 import AccountCard from '@/components/AccountCard';
 export default function Dashboard() {
@@ -46,12 +46,6 @@ export default function Dashboard() {
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const logoutHandler = async () => {
-    await localStorage.removeItem('token');
-    toast.success('Logout successful');
-    router.push('/auth/login');
   };
 
   const handleAddMoney = async () => {

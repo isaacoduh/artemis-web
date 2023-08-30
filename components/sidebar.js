@@ -1,7 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
+import { useRouter } from 'next/router';
 
+import { toast } from 'react-hot-toast';
 const Sidebar = () => {
+  const router = useRouter();
+  const handleLogout = async () => {
+    await localStorage.clear();
+    toast.success('Logout successful');
+    router.push('/auth/login');
+  };
   return (
     <nav className='col-md-3 col-lg-2 d-md-block bg-dark sidebar'>
       <div className='sidebar-brand'>
@@ -31,10 +39,12 @@ const Sidebar = () => {
               Settings
             </a>
           </li>
+          <li className='nav-item'>
+            <button onClick={handleLogout} className='nav-link'>
+              Logout
+            </button>
+          </li>
         </ul>
-        <div className='position-absolute bottom-0 pb-3 text-center w-100'>
-          <small className='text-muted'>Version 1.0.0</small>
-        </div>
       </div>
     </nav>
   );
