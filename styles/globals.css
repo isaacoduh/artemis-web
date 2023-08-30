@@ -76,6 +76,11 @@
   font-size: 24px;
   width: 60px;
 }
+
+.account-card {
+  background-color: teal !important;
+  color: #f8f8f8 !important;
+}
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;

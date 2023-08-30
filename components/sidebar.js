@@ -13,6 +13,11 @@ const Sidebar = () => {
         <ul className='nav flex-column sidebar-nav'>
           <li className='nav-item'>
             <a className='nav-link active' href='#'>
+              Overview
+            </a>
+          </li>
+          <li className='nav-item'>
+            <a className='nav-link' href='#'>
               Payments
             </a>
           </li>
