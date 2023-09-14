@@ -2,7 +2,7 @@ import Layout from '@/components/layout';
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { FaMoneyBillWave, FaPlus } from 'react-icons/fa';
+import { FaMoneyBillWave, FaMoneyCheck, FaPlus } from 'react-icons/fa';
 
 import axios from 'axios';
 
@@ -53,6 +53,10 @@ export default function Dashboard() {
     router.push('/accounts/add-money');
   };
 
+  const handleCreateAccount = async () => {
+    router.push('/accounts/create-account');
+  };
+
   useEffect(() => {
     const tokenPresent = localStorage.getItem('token');
     if (!tokenPresent) {
@@ -72,6 +76,14 @@ export default function Dashboard() {
         <div className='d-flex justify-content-between mb-3'>
           <h5>Your Accounts</h5>
           <div>
+            <button
+              onClick={handleCreateAccount}
+              className='btn btn-outline-dark mx-1'
+              style={{ borderRadius: 0 }}
+            >
+              <FaMoneyCheck className='mx-1' />
+              Create Account
+            </button>
             <button
               className='btn btn-outline-dark mx-1'
               style={{ borderRadius: 0 }}
