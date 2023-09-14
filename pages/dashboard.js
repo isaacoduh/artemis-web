@@ -8,6 +8,7 @@ import axios from 'axios';
 
 import Sidebar from '@/components/sidebar';
 import AccountCard from '@/components/AccountCard';
+import StatusComponent from '@/components/StatusComponent';
 export default function Dashboard() {
   //   const token = localStorage.getItem('token');
   const [user, setUser] = useState({});
@@ -76,7 +77,7 @@ export default function Dashboard() {
               style={{ borderRadius: 0 }}
             >
               <FaMoneyBillWave className='mx-1' />
-              Make Payments
+              Send Money
             </button>
             <button
               onClick={handleAddMoney}
@@ -99,6 +100,56 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
+        </div>
+        <div className='mt-3'>
+          <h6 className='text-muted'>Latest Transactions</h6>
+          <hr />
+          <table className='table table-bordered'>
+            <thead>
+              <tr>
+                <th scope='col'>Name</th>
+                <th scope='col'>Transaction Type</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>Amount</th>
+                <th scope='col'>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope='row'>Rotimi Fabiyi</td>
+                <td>Money Sent</td>
+                <td>August 20th, 10:30 am</td>
+                <td>23,000</td>
+                <td>
+                  <div style={{ width: '70%', textAlign: 'center' }}>
+                    <StatusComponent status='successful' />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td scope='row'>MTN</td>
+                <td>Mobile Topup</td>
+                <td>August 2nd, 11:30 pm</td>
+                <td>2,000</td>
+                <td>
+                  <div style={{ width: '70%', textAlign: 'center' }}>
+                    <StatusComponent status='failed' />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td scope='row'>Damian</td>
+                <td>Money Recieved</td>
+                <td>July 11th, 5:00 pm</td>
+                <td>3,000</td>
+                <td>
+                  <div style={{ width: '70%', textAlign: 'center' }}>
+                    <StatusComponent status='pending' />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       {/* <Sidebar />

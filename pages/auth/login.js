@@ -24,13 +24,14 @@ export default function LoginPage() {
         })
         .then((response) => {
           localStorage.setItem('token', response.data.data.tokens.access.token);
+          setLoading(false);
+          router.push('/dashboard');
+          toast.success('Login Success');
         })
         .catch((error) => {
+          setLoading(false);
           toast.error(error.response.data.message);
         });
-      setLoading(false);
-      router.push('/dashboard');
-      toast.success('Login Success');
     } catch (error) {
       setLoading(false);
       toast.error('Something went wrong!');
