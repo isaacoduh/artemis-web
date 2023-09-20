@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 export default function CreateAccount() {
   const [user, setUser] = useState({});
-  const [currency, SetCurrency] = useState('');
+  const [currency, setCurrency] = useState('');
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -60,7 +60,7 @@ export default function CreateAccount() {
                 id='currencySelect'
                 className='form-control'
                 value={currency}
-                onChange={(e) => SetCurrency(e.target.value)}
+                onChange={(e) => setCurrency(e.target.value)}
               >
                 <option>Select Currency</option>
                 <option value='NGN'>Naira</option>

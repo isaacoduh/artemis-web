@@ -57,6 +57,10 @@ export default function Dashboard() {
     router.push('/accounts/create-account');
   };
 
+  const handleSendMoney = async () => {
+    router.push('/transfers/send-money');
+  };
+
   useEffect(() => {
     const tokenPresent = localStorage.getItem('token');
     if (!tokenPresent) {
@@ -85,6 +89,7 @@ export default function Dashboard() {
               Create Account
             </button>
             <button
+              onClick={handleSendMoney}
               className='btn btn-outline-dark mx-1'
               style={{ borderRadius: 0 }}
             >
